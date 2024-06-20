@@ -1,0 +1,23 @@
+.screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.scenario {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.scenario_zone--enemy{}
+
+.zone {
+    position: absolute;
+}
