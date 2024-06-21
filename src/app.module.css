@@ -9,9 +9,11 @@
 
 .scenario {
     display: flex;
+    width: 50vw;
+    height: 100vh;
+    background: #ff00e6;
     flex-direction: column;
     gap: 1rem;
-
     justify-content: center;
     align-items: center;
 }
