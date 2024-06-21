@@ -1,13 +1,12 @@
 export interface Heroe {
-    hp: number;
-    ap: number;
-    atk: number;
-    defense: number;
-    agi: number;
+	hp: number;
+	ap: number;
+	atk: number;
+	defense: number;
+	agi: number;
 }
 
-
 interface HeoreActions {
-    attack(): void;
-    defense(): void;
+	attack(): void;
+	defense(): void;
 }
