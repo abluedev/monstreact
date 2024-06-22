@@ -1,1 +1,7 @@
-.scenario_zone--enemy{}
+.scenario_zone--enemy{
+    height: 50%;
+}
+
+.zone {
+    position: absolute;
+}
