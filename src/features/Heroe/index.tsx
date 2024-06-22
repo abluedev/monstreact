@@ -1,4 +1,8 @@
 import styles from './styles.module.css';
+import { GiPointySword } from "react-icons/gi";
+import { GiBoltShield } from "react-icons/gi";
+
+
 
 import { MutableRefObject } from "react";
 
@@ -25,12 +29,18 @@ export const Heroe = ({ action }: HeroeProps & ElementProps) => {
 						onClick={() => (action.current = "ATTACK")}
 					>
 						Attack
+						<GiPointySword className={`${styles["heroe_action--icon"]}`}/>
 					</button>
 					<button
 						className={`${styles["heroe_action"]} ${styles["heroe_action--defense"]}`}
-						onClick={() => (action.current = "DEFENSE")}
+						onClick={() => {
+
+							(action.current = "DEFENSE")
+						}}
 					>
 						Defense
+						<GiBoltShield className={`${styles["heroe_action--icon"]}`}/>
+
 					</button>
 				</section>
 		</section>

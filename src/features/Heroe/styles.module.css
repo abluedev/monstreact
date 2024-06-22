@@ -46,13 +46,34 @@
     gap: 0.5rem;
     left: 50%;
     transform: translate(-50%, -15px);
+
 }
 
 .heroe_action {
     padding: 1rem;
     background: #FF9800;
     border: 2px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
+
+.heroe_action:hover {
+    cursor: pointer;
+    background: #fab34f;
+}
+
+.heroe_action--icon {
+    transform: scale(1.5);
+    margin-left: 16px;
+}
+
+
 
 .zone {
     position: absolute;
