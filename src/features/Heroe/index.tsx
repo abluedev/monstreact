@@ -1,4 +1,5 @@
-import styles from "../../app.module.css";
+import styles from './styles.module.css';
+
 import { MutableRefObject } from "react";
 
 export interface HeroeProps {
@@ -17,21 +18,21 @@ interface ElementProps {
 export const Heroe = ({ action }: HeroeProps & ElementProps) => {
 	return (
 		<section className={styles["scenario_zone--heroe"]}>
-			<div> Heroe</div>
-			<div className={styles["heroe"]}>
-				<button
-					className={styles["heroe_actions heroe_actions--attack"]}
-					onClick={() => (action.current = "ATTACK")}
-				>
-					Attack
-				</button>
-				<button
-					className={styles["heroe_actions heroe_actions--defense"]}
-					onClick={() => (action.current = "DEFENSE")}
-				>
-					Defense
-				</button>
-			</div>
+				<img src={'assets/heroe/heroe.png'} alt={"Aniv heroe"}/>
+				<section className={styles["heroe--actions"]}>
+					<button
+						className={`${styles["heroe_action"]} ${styles["heroe_action--attack"]}`}
+						onClick={() => (action.current = "ATTACK")}
+					>
+						Attack
+					</button>
+					<button
+						className={`${styles["heroe_action"]} ${styles["heroe_action--defense"]}`}
+						onClick={() => (action.current = "DEFENSE")}
+					>
+						Defense
+					</button>
+				</section>
 		</section>
 	);
 };

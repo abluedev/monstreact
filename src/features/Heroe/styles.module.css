@@ -1,0 +1,59 @@
+.scenario_zone--heroe {
+    height: 50%;
+}
+
+.scenario_zone--heroe:before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    background: linear-gradient(0deg, black, transparent);
+    z-index: -1;
+    height: 100%;
+    right: 0;
+}
+
+.scenario_zone--heroe:after {
+    content: '';
+    display: block;
+    padding-bottom: 35%;
+    background-color: #d58568;
+    position: absolute;
+    left: 0;
+    bottom: -2rem;
+    border-radius: 50%;
+    right: 0;
+    z-index: -1;
+    mix-blend-mode: overlay;
+}
+
+.heroe {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+.heroe--actions {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    gap: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, -15px);
+}
+
+.heroe_action {
+    padding: 1rem;
+    background: #FF9800;
+    border: 2px solid black;
+}
+
+.zone {
+    position: absolute;
+}

@@ -69,8 +69,8 @@ function App() {
 	return (
 		<article className={styles.screen}>
 			<div className={styles.scenario}>
-				<img src={'assets/battleback/GrassMaze-bottom.png'} className={`${styles["scenario_scene"]} ${styles["scene--bottom"]}`} alt={""}/>
-				<img src={'assets/battleback/GrassMaze-top.png'} className={`${styles["scenario_scene"]} ${styles["scene--top"]}`} alt={""} />
+				<img src={'assets/battleback/Forest-bottom.png'} className={`${styles["scenario_scene"]} ${styles["scene--bottom"]}`} alt={""}/>
+				<img src={'assets/battleback/Forest-top.png'} className={`${styles["scenario_scene"]} ${styles["scene--top"]}`} alt={""} />
 				<Enemy {...Frilledlizard} />
 				<Heroe {...Aniv} action={action} />
 			</div>

@@ -1,5 +1,5 @@
 import { EnemyProps } from "./Enemy.ts";
-import styles from "../../app.module.css";
+import styles from "./styles.module.css";
 
 export const Enemy = (enemy: EnemyProps) => {
 	return (
