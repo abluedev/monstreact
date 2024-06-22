@@ -9,14 +9,29 @@
 
 .scenario {
     display: flex;
+    width: 50vw;
+    height: 100vh;
+
     flex-direction: column;
     gap: 1rem;
-
     justify-content: center;
     align-items: center;
 }
 
-.scenario_zone--enemy{}
+.scenario_scene {
+    position: absolute;
+    z-index: -1;
+}
+
+.scene--top {
+    top: 0;
+    background: radial-gradient(#00000085, transparent);
+
+}
+
+.scene--bottom {
+    bottom:0;
+}
 
 .zone {
     position: absolute;

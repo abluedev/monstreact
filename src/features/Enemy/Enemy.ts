@@ -1,12 +1,13 @@
-export interface Enemy {
-    hp: number;
-    ap: number;
-    atk: number;
-    defense: number;
-    agi: number;
-    drops: Array<string>;
+export interface EnemyProps {
+	hp: number;
+	ap: number;
+	atk: number;
+	defense: number;
+	agi: number;
+	drops: Array<string>;
+	img: string;
 }
 
 interface EnemyActions {
-    attack(): void;
+	attack(): void;
 }
