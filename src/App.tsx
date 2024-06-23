@@ -7,13 +7,6 @@ import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBatt
 import {ShortSword} from "./features/Weapon/short-sword.ts";
 
 function App() {
-	const animation = [
-		"Slash_part_1.png",
-		"Slash_part_2.png",
-		"Slash_part_3.png",
-		"Slash_part_4.png",
-		"Slash_part_5.png",
-	];
 	// No se puede usar useState porque refresca el navegador y "reinicia" requestAnimationFrame
 	const action = useRef<Actions>("IDLE");
 	let loop: number = 0;
@@ -30,7 +23,7 @@ function App() {
 			i = i + 1;
 		}
 
-		if (i === animation.length) {
+		if (i === ShortSword.animation.length) {
 			i = 0;
 			imageSlash.src = "";
 			cancelAnimationFrame(loop);
