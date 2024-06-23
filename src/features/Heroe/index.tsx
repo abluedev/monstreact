@@ -5,24 +5,16 @@ import { GiBoltShield } from "react-icons/gi";
 
 
 import { MutableRefObject } from "react";
-
-export interface HeroeProps {
-	hp: number;
-	ap: number;
-	atk: number;
-	defense: number;
-	agi: number;
-	img: string;
-}
+import {HeroeProps} from "./Heroe.ts";
 
 interface ElementProps {
 	action: MutableRefObject<string>;
 }
 
-export const Heroe = ({ action }: HeroeProps & ElementProps) => {
+export const Heroe = ({ config, action }: HeroeProps & ElementProps) => {
 	return (
 		<section className={styles["scenario_zone--heroe"]}>
-				<img src={'assets/heroe/heroe.png'} alt={"Aniv heroe"}/>
+				<img src={config.avatar} alt={"Aniv heroe"}/>
 				<section className={styles["heroe--actions"]}>
 					<button
 						className={`${styles["heroe_action"]} ${styles["heroe_action--attack"]}`}

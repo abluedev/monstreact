@@ -21,7 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@animations/*": ["assets/animations"]
+      "@animations/*": ["assets/animations"],
     }
   },
   "include": ["src"],
