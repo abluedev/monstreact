@@ -3,7 +3,7 @@ import {useRef} from "react";
 import {Enemy} from "./features/Enemy";
 import {EnemyProps} from "./features/Enemy/Enemy.ts";
 import {Heroe, HeroeProps} from "./features/Heroe";
-import {ACTIONS, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "./utils.ts";
+import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "./utils.ts";
 
 function App() {
 	const animation = [
@@ -14,7 +14,7 @@ function App() {
 		"Slash_part_5.png",
 	];
 	// No se puede usar useState porque refresca el navegador y "reinicia" requestAnimationFrame
-	const action = useRef<ACTIONS>("IDLE");
+	const action = useRef<Actions>("IDLE");
 	let loop: number = 0;
 	let i = 0;
 
@@ -37,7 +37,7 @@ function App() {
 			}
 		}
 
-		const selectAnimation: Map<ACTIONS, () => void> = new Map([['ATTACK', attackAnimation]])
+		const selectAnimation: Map<Actions, () => void> = new Map([['ATTACK', attackAnimation]])
 		setAnimation(selectAnimation.get(action.current)!, handleAttack)
 	};
 
