@@ -4,15 +4,9 @@ import {Enemy} from "./features/Enemy";
 import {EnemyProps} from "./features/Enemy/Enemy.ts";
 import {Heroe, HeroeProps} from "./features/Heroe";
 import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "./utils.ts";
+import {ShortSword} from "./features/Weapon/short-sword.ts";
 
 function App() {
-	const animation = [
-		"Slash_part_1.png",
-		"Slash_part_2.png",
-		"Slash_part_3.png",
-		"Slash_part_4.png",
-		"Slash_part_5.png",
-	];
 	// No se puede usar useState porque refresca el navegador y "reinicia" requestAnimationFrame
 	const action = useRef<Actions>("IDLE");
 	let loop: number = 0;
@@ -25,16 +19,15 @@ function App() {
 
 		if (loop !== null) {
 			// Más tarde debe de ir en las props del arma
-			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${animation[i]}`;
+			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${ShortSword.animation[i]}`;
 			i = i + 1;
 		}
 
-		if (i === animation.length) {
+		if (i === ShortSword.animation.length) {
 			i = 0;
 			imageSlash.src = "";
 			cancelAnimationFrame(loop);
-			const sound = new Audio('assets/sounds/effects/Slash7.ogg');
-			sound.play();
+			ShortSword.sound.play();
 			action.current = "IDLE";
 		}
 	}
