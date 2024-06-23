@@ -18,24 +18,25 @@ function App() {
 	let loop: number = 0;
 	let i = 0;
 
-	const handleAttack = () => {
+	const attackAnimation = () => {
 		const imageSlash = document.querySelector(
 			'img[data-testid="ap-enemyZone"]',
 		) as HTMLImageElement;
 
-		const attackAnimation = () => {
-			if (loop !== null) {
-				imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${animation[i]}`;
-				i = i + 1;
-			}
-
-			if (i === animation.length) {
-				i = 0;
-				imageSlash.src = "";
-				cancelAnimationFrame(loop);
-				action.current = "IDLE";
-			}
+		if (loop !== null) {
+			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${animation[i]}`;
+			i = i + 1;
 		}
+
+		if (i === animation.length) {
+			i = 0;
+			imageSlash.src = "";
+			cancelAnimationFrame(loop);
+			action.current = "IDLE";
+		}
+	}
+	
+	const handleAttack = () => {
 
 		const selectAnimation: Map<Actions, () => void> = new Map([['ATTACK', attackAnimation]])
 		setAnimation(selectAnimation.get(action.current)!, handleAttack)
