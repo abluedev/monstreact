@@ -4,6 +4,7 @@ import {Enemy} from "./features/Enemy";
 import {EnemyProps} from "./features/Enemy/Enemy.ts";
 import {Heroe, HeroeProps} from "./features/Heroe";
 import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "./utils.ts";
+import {ShortSword} from "./features/Weapon/short-sword.ts";
 
 function App() {
 	const animation = [
@@ -25,7 +26,7 @@ function App() {
 
 		if (loop !== null) {
 			// Más tarde debe de ir en las props del arma
-			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${animation[i]}`;
+			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${ShortSword.animation[i]}`;
 			i = i + 1;
 		}
 
@@ -33,8 +34,7 @@ function App() {
 			i = 0;
 			imageSlash.src = "";
 			cancelAnimationFrame(loop);
-			const sound = new Audio('assets/sounds/effects/Slash7.ogg');
-			sound.play();
+			ShortSword.sound.play();
 			action.current = "IDLE";
 		}
 	}
