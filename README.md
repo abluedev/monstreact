@@ -60,7 +60,43 @@ export const useBattleBackBottomImage = (battleBackZone: BattleBackZone) => {
 Obligatorio rellenar en sus tipos: ```export type BattleBackZone = 'Forest'``` las zonas que se vayan añadiendo.
 
 
-# Hooks
+### setAnimation
+```
+@param callback: () => T
+@param callbackAnimation: () => void
+```
+
+Primero se escoge el **momento actual del frame**. Este momento **se actualizará durante todo el tiempo que dure la función**
+``const currentFrameTime = Date.now();``
+
+Previamente habremos cogido el **último frame que tuvimos**: ```const lastFrameTime = Date.now();```
+
+Calcularemos el tiempo **delta**, que es **el tiempo que ha transcurrido desde el último frame hasta el frame actual**. Si ese tiempo es mayor o = a 1000, significa que habrá ocurrido, al menos, un segundo.
+Este tiempo **delta** nos servirá para calcular los **frames per second**. Si queremos que haya **60 frames por segundo**:
+
+```delta >= 1000 / 60``` tendremos que dividir el tiempo **delta** entre 60. En este caso, queremos que ocurran a **20 frames por segundo**.
+Y dentro de esos frames, queremos que ocurra la animación de ataque, que se encuentra **dentro del parámetro** ``@callback``
+
+```
+const attackAnimation = () => {
+			if (action.current === "ATTACK" && loop !== null) {
+				imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${animation[i]}`;
+				i = i + 1;
+			}
+
+			if (i === animation.length) {
+				i = 0;
+				imageSlash.src = "";
+				cancelAnimationFrame(loop);
+				action.current = "IDLE";
+			}
+		}
+```
+
+Comprobamos que la animación que se ha triggereado es la de `ataque` y cambiamos la propiedad `src`de las imagenes por **cada una de las imágenes secuencialmente que conforman la animación global de ataque**.
+Cuando alcance el tope de las animaciones existentes, cancelaremos la animación para que no ocurra un **bucle infinito**.
+
+## Hooks
 
 - ``useBattleBack[Bottom | Top]Image``: Hook para situar la imagen de batalla de top o bottom
 
