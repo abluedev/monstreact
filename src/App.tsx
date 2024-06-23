@@ -24,6 +24,7 @@ function App() {
 		) as HTMLImageElement;
 
 		if (loop !== null) {
+			// Más tarde debe de ir en las props del arma
 			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${animation[i]}`;
 			i = i + 1;
 		}
@@ -32,6 +33,8 @@ function App() {
 			i = 0;
 			imageSlash.src = "";
 			cancelAnimationFrame(loop);
+			const sound = new Audio('assets/sounds/effects/Slash7.ogg');
+			sound.play();
 			action.current = "IDLE";
 		}
 	}
