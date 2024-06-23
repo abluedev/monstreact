@@ -17,7 +17,6 @@
     content: '';
     display: block;
     padding-bottom: 35%;
-    background-color: #d58568;
     position: absolute;
     left: 0;
     bottom: -2rem;
@@ -51,7 +50,7 @@
 
 .heroe_action {
     padding: 1rem;
-    background: #FF9800;
+    background: #00BCD4;
     border: 2px solid black;
 
     display: flex;

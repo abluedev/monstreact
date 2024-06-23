@@ -24,7 +24,9 @@ export const setAnimation = <T>(callback: () => T, callbackRequestAnimation: () 
     const delta = currentFrameTime - lastFrameTime;
 
     if (delta >= 1000 / framesPerSecond) {
-        callback();
+        if(callback){
+            callback();
+        }
     }
 
 

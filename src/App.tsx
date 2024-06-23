@@ -35,7 +35,7 @@ function App() {
 			action.current = "IDLE";
 		}
 	}
-	
+
 	const handleAttack = () => {
 
 		const selectAnimation: Map<Actions, () => void> = new Map([['ATTACK', attackAnimation]])
