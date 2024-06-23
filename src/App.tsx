@@ -2,9 +2,9 @@ import styles from "./app.module.css";
 import {useRef} from "react";
 import {Enemy} from "./features/Enemy";
 import {EnemyProps} from "./features/Enemy/Enemy.ts";
-import {Heroe, HeroeProps} from "./features/Heroe";
+import {Heroe} from "./features/Heroe";
 import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "./utils.ts";
-import {ShortSword} from "./features/Weapon/short-sword.ts";
+import {Aniv} from "./features/Heroe/Heroe.ts";
 
 function App() {
 	// No se puede usar useState porque refresca el navegador y "reinicia" requestAnimationFrame
@@ -19,15 +19,15 @@ function App() {
 
 		if (loop !== null) {
 			// Más tarde debe de ir en las props del arma
-			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${ShortSword.animation[i]}`;
+			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${Aniv.equipment.weapon.animation[i]}`;
 			i = i + 1;
 		}
 
-		if (i === ShortSword.animation.length) {
+		if (i === Aniv.equipment.weapon.animation.length) {
 			i = 0;
 			imageSlash.src = "";
 			cancelAnimationFrame(loop);
-			ShortSword.sound.play();
+			Aniv.equipment.weapon.sound.play();
 			action.current = "IDLE";
 		}
 	}
@@ -50,14 +50,6 @@ function App() {
 		img: "assets/enemies/Frilledlizard.png",
 	};
 
-	const Aniv: HeroeProps = {
-		hp: 10,
-		ap: 4,
-		defense: 2,
-		atk: 2,
-		agi: 2,
-		img: "",
-	};
 
 	return (
 		<article className={styles.screen}>
