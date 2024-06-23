@@ -1,8 +1,9 @@
 import styles from "./app.module.css";
-import { useRef } from "react";
-import { Enemy } from "./features/Enemy";
-import { EnemyProps } from "./features/Enemy/Enemy.ts";
-import { Heroe, HeroeProps } from "./features/Heroe";
+import {useRef} from "react";
+import {Enemy} from "./features/Enemy";
+import {EnemyProps} from "./features/Enemy/Enemy.ts";
+import {Heroe, HeroeProps} from "./features/Heroe";
+import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "./utils.ts";
 
 function App() {
 	const animation = [
@@ -13,26 +14,18 @@ function App() {
 		"Slash_part_5.png",
 	];
 	// No se puede usar useState porque refresca el navegador y "reinicia" requestAnimationFrame
-	const action = useRef<string>("IDLE");
-
-	let lastFrameTime = Date.now();
-	let framesPerSecond = 20; //20 FPS
+	const action = useRef<Actions>("IDLE");
 	let loop: number = 0;
 	let i = 0;
 
-	const handleAttack = () => {
+	const attackAnimation = () => {
 		const imageSlash = document.querySelector(
 			'img[data-testid="ap-enemyZone"]',
 		) as HTMLImageElement;
-		const currentTime = Date.now();
-		let delta = currentTime - lastFrameTime;
 
-		if (delta >= 1000 / framesPerSecond) {
-			lastFrameTime = Date.now();
-			if (action.current === "ATTACK" && loop !== null) {
-				imageSlash.src = `assets/animations/slash/${animation[i]}`;
-				i = i + 1;
-			}
+		if (loop !== null) {
+			imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${animation[i]}`;
+			i = i + 1;
 		}
 
 		if (i === animation.length) {
@@ -41,8 +34,12 @@ function App() {
 			cancelAnimationFrame(loop);
 			action.current = "IDLE";
 		}
+	}
+	
+	const handleAttack = () => {
 
-		requestAnimationFrame(handleAttack);
+		const selectAnimation: Map<Actions, () => void> = new Map([['ATTACK', attackAnimation]])
+		setAnimation(selectAnimation.get(action.current)!, handleAttack)
 	};
 
 	loop = requestAnimationFrame(handleAttack);
@@ -69,8 +66,8 @@ function App() {
 	return (
 		<article className={styles.screen}>
 			<div className={styles.scenario}>
-				<img src={'assets/battleback/Forest-bottom.png'} className={`${styles["scenario_scene"]} ${styles["scene--bottom"]}`} alt={""}/>
-				<img src={'assets/battleback/Forest-top.png'} className={`${styles["scenario_scene"]} ${styles["scene--top"]}`} alt={""} />
+				<img src={useBattleBackBottomImage('Forest')} className={`${styles["scenario_scene"]} ${styles["scene--bottom"]}`} alt={"battleback bottom"}/>
+				<img src={useBattleBackTopImage('Forest')} className={`${styles["scenario_scene"]} ${styles["scene--top"]}`} alt={"battleback top"} />
 				<Enemy {...Frilledlizard} />
 				<Heroe {...Aniv} action={action} />
 			</div>
