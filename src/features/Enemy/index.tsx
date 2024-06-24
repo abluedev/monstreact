@@ -1,7 +1,6 @@
-import { EnemyProps } from "./Enemy.ts";
 import styles from "./styles.module.css";
 
-export const Enemy = (enemy: EnemyProps) => {
+export const Enemy = () => {
 	return (
 		<section className={styles["scenario_zone--enemy"]}>
 			<img
