@@ -7,7 +7,3 @@ export interface EnemyProps {
 	drops: Array<string>;
 	img: string;
 }
-
-interface EnemyActions {
-	attack(): void;
-}

@@ -15,11 +15,6 @@ export interface HeroeProps {
 	}
 }
 
-interface HeoreActions {
-	attack(): void;
-	defense(): void;
-}
-
 export const Aniv: HeroeProps = {
 	atk: 3,
 	defense: 2,

@@ -1,7 +1,6 @@
 import styles from "./app.module.css";
 import {useRef} from "react";
 import {Enemy} from "./features/Enemy";
-import {EnemyProps} from "./features/Enemy/Enemy.ts";
 import {Heroe} from "./features/Heroe";
 import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "./utils.ts";
 import {Aniv} from "./features/Heroe/Heroe.ts";
@@ -40,23 +39,13 @@ function App() {
 
 	loop = requestAnimationFrame(handleAttack);
 
-	const Frilledlizard: EnemyProps = {
-		hp: 6,
-		ap: 0,
-		defense: 1,
-		atk: 2,
-		agi: 3,
-		drops: ["Colmillo"],
-		img: "assets/enemies/Frilledlizard.png",
-	};
-
 
 	return (
 		<article className={styles.screen}>
 			<div className={styles.scenario}>
 				<img src={useBattleBackBottomImage('Forest')} className={`${styles["scenario_scene"]} ${styles["scene--bottom"]}`} alt={"battleback bottom"}/>
 				<img src={useBattleBackTopImage('Forest')} className={`${styles["scenario_scene"]} ${styles["scene--top"]}`} alt={"battleback top"} />
-				<Enemy {...Frilledlizard} />
+				<Enemy />
 				<Heroe {...Aniv} action={action} />
 			</div>
 		</article>
