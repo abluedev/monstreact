@@ -1,5 +1,7 @@
 .scenario_zone--enemy{
     height: 50%;
+    display: flex;
+    align-items: flex-end;
 }
 
 .zone {
