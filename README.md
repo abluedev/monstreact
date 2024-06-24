@@ -116,3 +116,9 @@ Cuando alcance el tope de las animaciones existentes, cancelaremos la animación
 - https://biomejs.dev/linter/rules/no-banned-types/
 - https://biomejs.dev/linter/rules/no-excessive-cognitive-complexity/
 - 
+# monstreact
+# monstreact
+# monstreact
+# monstreact
+# monstreact
+# monstreact
