@@ -9,13 +9,12 @@
 
 .scenario {
     display: flex;
-    width: 50vw;
-    height: 100vh;
-
-    flex-direction: column;
-    gap: 1rem;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 80%;
+    position: relative;
+    height: 100%;
 }
 
 .scenario_scene {
