@@ -25,6 +25,6 @@ export const Aniv: HeroeProps = {
 		weapon: ShortSword
 	},
 	config: {
-		avatar: '/assets/heroe/heroe.png'
+		avatar: './assets/heroe/heroe.png'
 	}
 }
