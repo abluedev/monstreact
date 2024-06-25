@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://abluedev.github.io/monstreact",
+  "homepage": "https://abluedev.github.io/monstreact/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
