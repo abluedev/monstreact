@@ -1,10 +1,11 @@
 import {useEffect, useRef, useState} from "react";
-import {Actions, setAnimation, SRC_ANIMATIONS, useBattleBackBottomImage, useBattleBackTopImage} from "../../utils.ts";
+import {Actions, setAnimation, useBattleBackBottomImage, useBattleBackTopImage} from "../../utils.ts";
 import {Aniv} from "../Heroe/Heroe.ts";
 import styles from "../../app.module.css";
 import {Enemy} from "../Enemy";
 import {Heroe} from "../Heroe";
 import {EnemyCharacter, EnemyProps} from "../Enemy/Enemy.ts";
+import {WeaponState} from "../Weapon/Weapon.ts";
 
 export const Battle = ({endBattle} : {endBattle:
 () => void
@@ -13,6 +14,9 @@ export const Battle = ({endBattle} : {endBattle:
     const [ enemy, setEnemy ]  = useState<EnemyProps>({});
     const [ enemyHP, setEnemyHP ] = useState(enemy.hp);
     const music = useRef(new Audio('./assets/music/battle.ogg'));
+    const imageSlash = document.querySelector(
+        'img[data-testid="ap-enemyZone"]',
+    ) as HTMLImageElement;
 
     useEffect(() => {
         setEnemy(EnemyCharacter().spawn());
@@ -22,51 +26,39 @@ export const Battle = ({endBattle} : {endBattle:
     // No se puede usar useState porque refresca el navegador y "reinicia" requestAnimationFrame
     const action = useRef<Actions>("IDLE");
     let loop: number = 0;
-    let i = 0;
+    let frame = 0;
 
     const attackAnimation = () => {
         if(enemy.hp === undefined){ return; }
-        const imageSlash = document.querySelector(
-            'img[data-testid="ap-enemyZone"]',
-        ) as HTMLImageElement;
 
         if (loop !== null) {
-            // Más tarde debe de ir en las props del arma
-            imageSlash.src = `${SRC_ANIMATIONS('SLASH')}/${Aniv.equipment.weapon.animation[i]}`;
-            i = i + 1;
+            WeaponState.updateAnimation(imageSlash, frame);
+            frame += 1;
         }
 
-        if (i === Aniv.equipment.weapon.animation.length) {
-            i = 0;
-            imageSlash.src = "";
+        if (frame === Aniv.equipment.weapon.animation.length) {
+            WeaponState.endAnimation(imageSlash, frame);
             cancelAnimationFrame(loop);
             Aniv.equipment.weapon.sound.play();
             action.current = "IDLE";
 
-            handleEnemyDamaged()
+            const enemyStillAlive = EnemyCharacter(enemy, setEnemyHP).damaged();
+            if(!enemyStillAlive){
+                endBattle()
+                music.current.pause()
+            }
+            EnemyCharacter(enemy).idle();
             return;
         }
 
     }
 
-    const handleEnemyDamaged = () => {
-        Aniv.attack(enemy);
-        const enemyStillAlive = EnemyCharacter(enemy, setEnemyHP).damaged();
-        if(!enemyStillAlive){
-            endBattle()
-            music.current.pause()
-        }
-        EnemyCharacter(enemy).idle();
-    }
-
     const handleAttack = () => {
-
         const selectAnimation: Map<Actions, () => void> = new Map([['ATTACK', attackAnimation]])
         setAnimation(selectAnimation.get(action.current)!, handleAttack)
     };
 
     loop = requestAnimationFrame(handleAttack);
-
 
     return (
         <article className={styles.screen}>

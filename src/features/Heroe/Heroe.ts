@@ -1,6 +1,5 @@
 import {WeaponProps} from "../Weapon/Weapon.ts";
 import {ShortSword} from "../Weapon/short-sword.ts";
-import {EnemyProps} from "../Enemy/Enemy.ts";
 
 export interface HeroeProps {
 	hp: number;
@@ -14,8 +13,6 @@ export interface HeroeProps {
 	config: {
 		avatar: string;
 	}
-
-	attack: (enemy: EnemyProps) => void;
 }
 
 export const Aniv: HeroeProps = {
@@ -31,7 +28,5 @@ export const Aniv: HeroeProps = {
 		avatar: './assets/heroe/heroe.png'
 	},
 
-	attack(enemy: EnemyProps) {
-			enemy.hp -= Aniv.atk;
-	}
+
 }

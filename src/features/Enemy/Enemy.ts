@@ -1,6 +1,7 @@
 import {Frilledlizard} from "./enemies/frilledlizard.ts";
 import styles from "./styles.module.css";
 import {Dispatch, SetStateAction} from "react";
+import {Aniv} from "../Heroe/Heroe.ts";
 
 export interface EnemyProps {
 	hp: number;
@@ -25,12 +26,14 @@ export const EnemyCharacter = (enemy?: EnemyProps, setEnemyHP?: Dispatch<SetStat
 		},
 
 		damaged(): boolean {
+
 			const enemyImg = document.querySelector(`#enemy`);
 			enemyImg.classList.add(styles.damaged);
 			setTimeout(() => {
 				enemyImg.classList.remove(styles.damaged);
 				if(setEnemyHP){
-					setEnemyHP(enemy.hp);
+					setEnemyHP(enemy.hp -= Aniv.atk
+				);
 					return enemy.hp > 0;
 				}
 			}, 500);

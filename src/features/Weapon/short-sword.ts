@@ -9,5 +9,5 @@ export const ShortSword: WeaponProps = {
         "Slash_part_4.png",
         "Slash_part_5.png",
     ],
-    sound: new Audio('assets/sounds/effects/Slash7.ogg')
+    sound: new Audio('./assets/sounds/effects/Slash7.ogg')
 }
