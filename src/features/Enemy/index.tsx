@@ -1,22 +1,26 @@
 import styles from "./styles.module.css";
+import {EnemyProps} from "./Enemy.ts";
 
-export const Enemy = () => {
+export const Enemy = (enemy: EnemyProps) => {
+
 	return (
-		<section className={styles["scenario_zone--enemy"]}>
+		<section className={styles["zone"]}>
 			<img
 				src={""}
 				alt={""}
 				width={150}
 				height={150}
 				data-testid={"ap-enemyZone"}
-				className={styles["zone"]}
+				className={styles["zone--ap"]}
 			/>
 			<img
-				src={"assets/enemies/Frilledlizard.png"}
+				src={enemy.img}
 				width={150}
 				height={150}
+				id='enemy'
 				alt={"Frilledlizard enemy"}
 			/>
+			<div className={styles["enemy_stats--hp"]}> { enemy.hp }</div>
 		</section>
 	);
 };

@@ -1,9 +1,25 @@
-.scenario_zone--enemy{
-    height: 50%;
+.zone {
     display: flex;
     align-items: flex-end;
+    flex-direction: column;
+    margin-top: 2rem;
 }
 
-.zone {
+.zone--ap {
     position: absolute;
+}
+
+.enemy_stats--hp {
+    height: 2rem;
+    margin-top: 1rem;
+    background: #30f5ae;
+    width: 100%;
+    display: flex;
+    align-items: center;
+padding: 0.5rem;
+}
+
+
+.damaged {
+    background: red;
 }
