@@ -18,7 +18,7 @@ export interface EnemyProps {
 export const EnemyCharacter = (enemy?: EnemyProps, setEnemyHP?: Dispatch<SetStateAction<number>>) => {
 	return {
 		spawn(): EnemyProps {
-			return Frilledlizard;
+			return Object.assign({}, Frilledlizard);
 		},
 
 		attack(){
