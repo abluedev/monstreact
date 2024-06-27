@@ -40,17 +40,34 @@ export const Battle = ({endBattle} : {endBattle:
             WeaponState.endAnimation(imageSlash, frame);
             cancelAnimationFrame(loop);
             Aniv.equipment.weapon.sound.play();
-            action.current = "IDLE";
+            action.current = "WAITING";
 
             const enemyStillAlive = EnemyCharacter(enemy, setEnemyHP).damaged();
             if(!enemyStillAlive){
                 endBattle()
                 music.current.pause()
+
+                return;
             }
             EnemyCharacter(enemy).idle();
+            setTimeout(() => {
+                enemyAttack();
+
+            }, 500)
             return;
         }
+    }
 
+    const enemyAttack = () => {
+        if(action.current === 'WAITING') {
+            const heroeStillAlive = EnemyCharacter(enemy).attack(Aniv)
+            if(!heroeStillAlive){
+                endBattle();
+                music.current.pause();
+                alert('Has muerto!')
+            }
+        }
+        action.current = 'IDLE';
     }
 
     const handleAttack = () => {

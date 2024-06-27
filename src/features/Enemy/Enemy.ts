@@ -1,7 +1,7 @@
 import {Frilledlizard} from "./enemies/frilledlizard.ts";
 import styles from "./styles.module.css";
 import {Dispatch, SetStateAction} from "react";
-import {Aniv} from "../Heroe/Heroe.ts";
+import {Aniv, HeroeProps} from "../Heroe/Heroe.ts";
 
 export interface EnemyProps {
 	hp: number;
@@ -21,8 +21,10 @@ export const EnemyCharacter = (enemy?: EnemyProps, setEnemyHP?: Dispatch<SetStat
 			return Object.assign({}, Frilledlizard);
 		},
 
-		attack(){
-
+		attack(heroe: HeroeProps): boolean{
+			heroe.hp -= enemy?.atk;
+			console.log(heroe.hp)
+			return heroe.hp > 0;
 		},
 
 		damaged(): boolean {
