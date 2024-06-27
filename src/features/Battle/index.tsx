@@ -15,7 +15,7 @@ export const Battle = ({endBattle} : {endBattle:
     const [ enemyHP, setEnemyHP ] = useState(enemy.hp);
     const music = useRef(new Audio('./assets/music/battle.ogg'));
     const imageSlash = document.querySelector(
-        'img[data-testid="ap-enemyZone"]',
+        'img[data-testid="zone--ap"]',
     ) as HTMLImageElement;
 
     useEffect(() => {

@@ -10,7 +10,7 @@ export const Enemy = (enemy: EnemyProps) => {
 				alt={""}
 				width={150}
 				height={150}
-				data-testid={"ap-enemyZone"}
+				data-testid={"zone--ap"}
 				className={styles["zone--ap"]}
 			/>
 			<img
