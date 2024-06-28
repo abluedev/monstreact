@@ -12,6 +12,7 @@ Se compone de
 2. Un escenario **inferior** (`battleBackBottom`).
 3. El/los enemigo/s.
 4. El/los héroe/s.
+5. Las animaciones de combate
 
 ### Ejemplo:
 
@@ -29,6 +30,41 @@ Se compone de
 
 ----
 
+# El Héroe
+
+El héroe (Aniv) se compone de las siguientes propiedades:
+- ATK
+- DEFENSE
+- HP
+- AGI
+- AP
+- EQUIPMENT (Equipo)
+- CONFIG (Configuración del héroe - avatar, etc)
+
+** Por añadir
+
+- STATE (Estado: idle, envenenado, paralizado...)
+- Abilities: Set de habilidades
+- Lvl: Nivel del personaje
+
+# Acciones del Héroe
+
+- ATTACK: Atacar
+- DEFENSE: Defenderse
+- ABILITIES: Lanzar habilidades.
+- USE_ITEM: Usar objeto
+- IDLE: Estado natural del héroe
+- WAITING: Esperando las acciones de los enemigos
+
+# Las Interfaces Maestras (IM de ahora en adelante).
+
+Un IM es una interfaz que define las propiedades básicas de **cualquier objeto**. Un objeto deberá tener **las propiedades del IM** para ser considerado un Objeto Único en el juego.
+- Un Objeto Único (OU) es un objeto con "personalidad propia"; es decir, una ShortSword es una representación de una Weapon, pero es un objeto en sí mismo. La idea es que sean fácilmente
+reconocibles y que su organización sea menos caótica.
+
+## Organización
+
+La organización de los Objetos Únicos (OU) se encuentra **dentro** de las carpetas donde se hayan las IM. Cada OU tendrá **su propio fichero**.
 
 ## Colocación
 
@@ -101,11 +137,24 @@ Cuando alcance el tope de las animaciones existentes, cancelaremos la animación
 - ``useBattleBack[Bottom | Top]Image``: Hook para situar la imagen de batalla de top o bottom
 
 
+## (Object)State
+
+Objetos que tienen métodos que ayudan a la comprensión del código.
+
+### WeaponState
+
+#### updateAnimation y endAnimation
+
+@param image HTMLImageElement
+@param frame number
+
+Métodos que actualizan el HTMLImageElement con la imagen del frame correspondiente.
+
+
 ### Detalles técnicos
 
 * Velocidad de fotogramas: 20fps.
-
-
+* Enemigos: 150x150
 
 
 
@@ -115,10 +164,4 @@ Cuando alcance el tope de las animaciones existentes, cancelaremos la animación
 
 - https://biomejs.dev/linter/rules/no-banned-types/
 - https://biomejs.dev/linter/rules/no-excessive-cognitive-complexity/
-- 
-# monstreact
-# monstreact
-# monstreact
-# monstreact
-# monstreact
-# monstreact
+-
