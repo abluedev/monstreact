@@ -47,6 +47,15 @@ El héroe (Aniv) se compone de las siguientes propiedades:
 - Abilities: Set de habilidades
 - Lvl: Nivel del personaje
 
+# Acciones del Héroe
+
+- ATTACK: Atacar
+- DEFENSE: Defenderse
+- ABILITIES: Lanzar habilidades.
+- USE_ITEM: Usar objeto
+- IDLE: Estado natural del héroe
+- WAITING: Esperando las acciones de los enemigos
+
 # Las Interfaces Maestras (IM de ahora en adelante).
 
 Un IM es una interfaz que define las propiedades básicas de **cualquier objeto**. Un objeto deberá tener **las propiedades del IM** para ser considerado un Objeto Único en el juego.

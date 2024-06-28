@@ -40,15 +40,16 @@ export const Battle = ({endBattle} : {endBattle:
             WeaponState.endAnimation(imageSlash, frame);
             cancelAnimationFrame(loop);
             Aniv.equipment.weapon.sound.play();
-            action.current = "WAITING";
 
-            const enemyStillAlive = EnemyCharacter(enemy, setEnemyHP).damaged();
+            const enemyStillAlive = EnemyCharacter(enemy).damaged(setEnemyHP);
+
             if(!enemyStillAlive){
                 endBattle()
                 music.current.pause()
 
                 return;
             }
+            action.current = "WAITING";
             EnemyCharacter(enemy).idle();
             setTimeout(() => {
                 enemyAttack();

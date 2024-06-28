@@ -35,12 +35,14 @@
 
 .scene--top {
     top: 0;
+    height: 100%;
     background: radial-gradient(#00000085, transparent);
 
 }
 
 .scene--bottom {
     bottom:0;
+    height: 100%;
 }
 
 .zone {

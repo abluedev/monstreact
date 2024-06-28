@@ -1,6 +1,9 @@
 .scenario {
     width: 100vw;
     height: 100vh;
-    background-image: url('./assets/map/zoneA.png');
-
+    background-image: url(./assets/map/zoneA.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: black;
 }

@@ -1,8 +1,8 @@
-.scenario_zone--heroe {
+.heroe {
     height: 50%;
 }
 
-.scenario_zone--heroe:after {
+.heroe:after {
     content: '';
     display: block;
     padding-bottom: 35%;
@@ -24,7 +24,7 @@
 
 
 
-.heroe--stats {
+.heroe_stats {
     display: flex;
     position: absolute;
     bottom: 0;
@@ -37,10 +37,10 @@
 
 }
 
-.heroe--img {
+.heroe_img {
     position: absolute;
     left: 0;
-    transform: translate(-110px, -50%);
+    bottom: 0;
 }
 
 .effect {
@@ -63,7 +63,8 @@
     letter-spacing: 1px;
     font-weight: 700;
 }
-.heroe_stat {
+
+.heroe_stats--hp, .heroe_stats--ap {
     padding: 1rem;
     background: #00BCD4;
     border: 2px solid black;
@@ -77,12 +78,20 @@
     font-weight: 700;
 }
 
-.heroe_action:hover {
-    cursor: pointer;
-    background: #fab34f;
+.heroe_actions {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.heroe_stat:hover {
+.heroe_action {
+    flex: 0 0 50%;
+}
+
+.heroe_action:hover {
     cursor: pointer;
     background: #fab34f;
 }
@@ -98,12 +107,3 @@
     position: absolute;
 }
 
-.heroe--actions {
-    display: flex;
-    position: absolute;
-    right: 0;
-    flex-direction: column;
-    gap: 1rem;
-    transform: translateY(60px) skewY(10deg);
-    width: 300px;
-}
