@@ -11,8 +11,8 @@ export const Battle = ({endBattle} : {endBattle:
 () => void
 }) => {
 
-    const [ enemy, setEnemy ]  = useState<EnemyProps>({});
-    const [ enemyHP, setEnemyHP ] = useState(enemy.hp);
+    const [ enemy, setEnemy ]  = useState<EnemyProps>();
+    const [ enemyHP, setEnemyHP ] = useState(enemy?.hp);
     const music = useRef(new Audio('./assets/music/battle.ogg'));
     const imageSlash = document.querySelector(
         'img[data-testid="zone--ap"]',
@@ -29,7 +29,7 @@ export const Battle = ({endBattle} : {endBattle:
     let frame = 0;
 
     const attackAnimation = () => {
-        if(enemy.hp === undefined){ return; }
+        if(enemy?.hp === undefined){ return; }
 
         if (loop !== null) {
             WeaponState.updateAnimation(imageSlash, frame);
@@ -37,11 +37,12 @@ export const Battle = ({endBattle} : {endBattle:
         }
 
         if (frame === Aniv.equipment.weapon.animation.length) {
-            WeaponState.endAnimation(imageSlash, frame);
+            WeaponState.endAnimation(imageSlash);
+            frame = 0;
             cancelAnimationFrame(loop);
             Aniv.equipment.weapon.sound.play();
 
-            const enemyStillAlive = EnemyCharacter(enemy).damaged(setEnemyHP);
+            const enemyStillAlive = EnemyCharacter().damaged(enemy, setEnemyHP);
 
             if(!enemyStillAlive){
                 endBattle()
@@ -50,7 +51,7 @@ export const Battle = ({endBattle} : {endBattle:
                 return;
             }
             action.current = "WAITING";
-            EnemyCharacter(enemy).idle();
+            EnemyCharacter().idle();
             setTimeout(() => {
                 enemyAttack();
 
@@ -61,7 +62,7 @@ export const Battle = ({endBattle} : {endBattle:
 
     const enemyAttack = () => {
         if(action.current === 'WAITING') {
-            const heroeStillAlive = EnemyCharacter(enemy).attack(Aniv)
+            const heroeStillAlive = EnemyCharacter().attack(enemy!, Aniv)
             if(!heroeStillAlive){
                 endBattle();
                 music.current.pause();
@@ -84,7 +85,7 @@ export const Battle = ({endBattle} : {endBattle:
             <div className={styles.scenario}>
                 <img src={useBattleBackBottomImage('Forest')} className={`${styles["scenario_scene"]} ${styles["scene--bottom"]}`} alt={"battleback bottom"}/>
                 <img src={useBattleBackTopImage('Forest')} className={`${styles["scenario_scene"]} ${styles["scene--top"]}`} alt={"battleback top"} />
-                <Enemy {...enemy} hp={enemyHP}  />
+                { enemy && <Enemy {...enemy} hp={enemyHP!}  /> }
                 <Heroe {...Aniv} action={action} />
             </div>
             </div>

@@ -13,8 +13,9 @@ export const WeaponState = {
             image.src = `${SRC_ANIMATIONS('SLASH')}/${Aniv.equipment.weapon.animation[frame]}`;
         },
 
-        endAnimation(image: HTMLImageElement, frame: number){
-            frame = 0;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        endAnimation(image: HTMLImageElement){
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             image.src = "";
         }
 }
