@@ -1,5 +1,5 @@
 export const SRC_ANIMATIONS = (animationName: AnimationName) => `assets/animations/${animationName.toLowerCase()}`
-export type Actions = 'ATTACK' | 'DEFENSE' | 'IDLE'
+export type Actions = 'ATTACK' | 'DEFENSE' | 'IDLE' | 'WAITING' | 'ABILITY' | 'USE_OBJECT'
 
 export type BattleBackZone = 'Forest'
 export type AnimationName = 'SLASH'

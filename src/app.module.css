@@ -4,7 +4,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    z-index: 1;
 
+}
+
+.backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .scenario {
@@ -12,7 +23,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     position: relative;
     height: 100%;
 }
@@ -24,12 +35,14 @@
 
 .scene--top {
     top: 0;
+    height: 100%;
     background: radial-gradient(#00000085, transparent);
 
 }
 
 .scene--bottom {
     bottom:0;
+    height: 100%;
 }
 
 .zone {

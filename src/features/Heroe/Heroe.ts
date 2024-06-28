@@ -16,7 +16,7 @@ export interface HeroeProps {
 }
 
 export const Aniv: HeroeProps = {
-	atk: 3,
+	atk: 28,
 	defense: 2,
 	hp: 80,
 	agi: 2,
@@ -26,5 +26,7 @@ export const Aniv: HeroeProps = {
 	},
 	config: {
 		avatar: './assets/heroe/heroe.png'
-	}
+	},
+
+
 }

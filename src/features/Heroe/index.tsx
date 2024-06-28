@@ -13,27 +13,27 @@ interface ElementProps {
 
 export const Heroe = ({ config, action }: HeroeProps & ElementProps) => {
 	return (
-		<section className={styles["scenario_zone--heroe"]}>
+		<section className={styles["heroe"]}>
 
-			<div className={styles["heroe--img"]}>
+			<div className={styles["heroe_img"]}>
 				<img src={config.avatar} alt={"Aniv heroe"}/>
 				<img src={"/assets/heroe/brush.svg"} alt={""} className={styles["effect"]}/>
 			</div>
-			<section className={styles["heroe--panel"]}>
-				<section className={styles["heroe--stats"]}>
-					<button
-						className={`${styles["heroe_stat"]} ${styles["heroe_action--hp"]}`}
+			<section className={styles["heroe_panel"]}>
+				<section className={styles["heroe_stats"]}>
+					<div
+						className={`${styles["heroe_stats--hp"]}`}
 					>
 						HP
-					</button>
-					<button
-						className={`${styles["heroe_stat"]} ${styles["heroe_action--ap"]}`}
+					</div>
+					<div
+						className={`${styles["heroe_stats--ap"]}`}
 					>
 						AP
 
-					</button>
+					</div>
 				</section>
-				<section className={styles["heroe--actions"]}>
+				<section className={styles["heroe_actions"]}>
 					<button
 						className={`${styles["heroe_action"]} ${styles["heroe_action--attack"]}`}
 						onClick={() => (action.current = "ATTACK")}
@@ -42,7 +42,7 @@ export const Heroe = ({ config, action }: HeroeProps & ElementProps) => {
 						<GiPointySword className={`${styles["heroe_action--icon"]}`}/>
 					</button>
 					<button
-						className={`${styles["heroe_action"]} ${styles["heroe_action--defense"]}`}
+						className={`${styles["heroe_action"]} "${styles["heroe_action--defense"]}`}
 						onClick={() => {
 
 							(action.current = "DEFENSE")
@@ -56,20 +56,20 @@ export const Heroe = ({ config, action }: HeroeProps & ElementProps) => {
 						className={`${styles["heroe_action"]} ${styles["heroe_action--defense"]}`}
 						onClick={() => {
 
-							(action.current = "DEFENSE")
+							(action.current = "ABILITY")
 						}}
 					>
-						Defense
+						Abilities
 						<GiBoltShield className={`${styles["heroe_action--icon"]}`}/>
 
 					</button><button
 						className={`${styles["heroe_action"]} ${styles["heroe_action--defense"]}`}
 						onClick={() => {
 
-							(action.current = "DEFENSE")
+							(action.current = "USE_ITEM")
 						}}
 					>
-						Defense
+						Items
 						<GiBoltShield className={`${styles["heroe_action--icon"]}`}/>
 
 					</button>
